@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101912">
+<title>Smile Tips — Prognósticos de Futebol</title>
+<style>
+:root{--bg:#0b110d;--panel:#121c15;--panel2:#19251c;--line:#29382c;--text:#f3f7f1;--muted:#9bad9d;--lime:#c3f36b;--green:#254b30}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17271b 0,#0b110d 52%);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1120px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--lime);color:#132015;font-size:25px;font-weight:900}.brand h1{font-size:22px;margin:0;letter-spacing:-.7px}.brand p{margin:0;color:var(--muted);font-size:12px}.pill{border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:var(--muted);font-size:12px}
+.hero{padding:32px 0 20px}.eyebrow{color:var(--lime);font-weight:800;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}.hero h2{font-size:clamp(29px,5vw,48px);line-height:1.05;letter-spacing:-1.5px;margin:10px 0}.hero p{color:var(--muted);max-width:650px;margin:0}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.control,button{font:inherit;border:1px solid var(--line);background:var(--panel);color:var(--text);padding:10px 13px;border-radius:11px}.control{flex:1;min-width:150px}button{cursor:pointer}button.primary{background:var(--lime);color:#172315;border-color:var(--lime);font-weight:800}button:focus,.control:focus{outline:2px solid var(--lime);outline-offset:2px}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:24px 0 12px}.sectionhead h3{margin:0;font-size:19px}.muted{color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:14px}.match{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:17px;min-width:0}.matchtop{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:12px}.league{color:var(--lime)}.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:20px 0}.team{text-align:center;font-weight:750}.crest{width:43px;height:43px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;background:#263b2a;border:1px solid #3c5740;font-size:19px}.vs{color:var(--muted);font-size:12px}.pred{border-top:1px solid var(--line);padding-top:14px}.predlabel{font-size:11px;color:var(--muted);margin-bottom:9px}.markets{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.market{background:#0e1710;border:1px solid var(--line);padding:9px 4px;text-align:center;border-radius:10px;font-size:12px;color:var(--muted)}.market b{display:block;color:var(--text);font-size:15px}.market.selected{border-color:var(--lime);background:#24351d}.market.selected b{color:var(--lime)}.matchactions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px}.smallbtn{padding:8px 10px;font-size:12px}.badge{border-radius:6px;background:#283a2a;color:var(--lime);padding:4px 7px;font-size:11px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:15px;align-items:start}.side{position:sticky;top:15px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px}.side h3{margin:0 0 6px}.empty{color:var(--muted);font-size:13px;padding:16px 0}.pick{padding:10px 0;border-bottom:1px solid var(--line);font-size:12px}.pick strong{display:block;font-size:13px}.sidebottom{display:flex;justify-content:space-between;margin:14px 0;font-size:13px}.notice{border:1px solid #45543a;background:#172117;color:#d0dccb;border-radius:12px;padding:12px;font-size:12px;margin-top:22px}.footer{color:var(--muted);font-size:12px;padding:24px 0 8px;text-align:center}
+@media(max-width:760px){.wrap{padding:16px}.layout{grid-template-columns:1fr}.side{position:static}.hero{padding-top:25px}.hero h2{letter-spacing:-.8px}.top .pill{display:none}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand"><div class="logo">S</div><div><h1>Smile Tips</h1><p>FUTEBOL · DADOS · PROGNÓSTICOS</p></div></div><span class="pill" id="status">Modo de demonstração</span></header>
+<section class="hero"><div class="eyebrow">O jogo começa na análise</div><h2>Decide com dados.<br><span style="color:var(--lime)">Não com certezas falsas.</span></h2><p>Consulta jogos, explora probabilidades e monta o teu boletim. As previsões são estimativas estatísticas e não garantem resultados.</p></section>
+<div class="controls"><input class="control" id="search" placeholder="Pesquisar equipa ou liga…" aria-label="Pesquisar equipa ou liga"><select class="control" id="day"><option value="today">Jogos disponíveis</option><option value="all">Todos os exemplos</option></select><button class="primary" id="refresh">↻ Atualizar jogos</button></div>
+<div class="layout"><main><div class="sectionhead"><h3>Jogos em destaque</h3><span class="muted" id="count">Exemplos ilustrativos</span></div><div class="grid" id="games"></div>
+<div class="notice"><strong>Nota sobre os dados:</strong> esta versão usa exemplos fictícios até ligares uma chave API no servidor. Não uses estes exemplos para apostar. As probabilidades apresentadas não são dados reais.</div></main>
+<aside class="side"><h3>Meu boletim</h3><div class="muted">Escolhe uma previsão em cada jogo.</div><div id="picks"><div class="empty">Ainda não selecionaste jogos.</div></div><div class="sidebottom"><span>Probabilidade combinada*</span><strong id="combined">—</strong></div><button class="primary" style="width:100%" id="clear">Limpar boletim</button><p class="muted">*Multiplicação simples de probabilidades estimadas; pressupõe independência e não representa garantia.</p></aside></div>
+<footer class="footer">Smile Tips · Protótipo em desenvolvimento · Apostar envolve risco.</footer>
+</div>
+<script>
+const demo=[
+{id:"demo1",league:"Premier League · EXEMPLO",date:"Exemplo",home:"Northbridge FC",away:"Harbour United",homeIcon:"🟢",awayIcon:"🔵",p:[52,27,21],score:"2–1"},
+{id:"demo2",league:"La Liga · EXEMPLO",date:"Exemplo",home:"Real Sierra",away:"Atlético Costa",homeIcon:"⚪",awayIcon:"🔴",p:[44,29,27],score:"1–1"},
+{id:"demo3",league:"Liga Portugal · EXEMPLO",date:"Exemplo",home:"Lisboa Athletic",away:"Porto Norte",homeIcon:"🟢",awayIcon:"🔵",p:[38,30,32],score:"1–2"},
+{id:"demo4",league:"Serie A · EXEMPLO",date:"Exemplo",home:"Milano Calcio",away:"Roma Verde",homeIcon:"⚫",awayIcon:"🟡",p:[47,28,25],score:"2–0"}];
+let games=[...demo], picks={};
+const marketNames=["Casa","Empate","Fora"];
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=games.filter(g=>(g.home+" "+g.away+" "+g.league).toLowerCase().includes(q));
+ document.getElementById("count").textContent=games===demo?"Exemplos ilustrativos":list.length+" jogos";
+ document.getElementById("games").innerHTML=list.map(g=>`<article class="match"><div class="matchtop"><span class="league">${g.league}</span><span>${g.date||""}</span></div><div class="teams"><div class="team"><div class="crest">${g.homeIcon||"⚽"}</div>${g.home}</div><div class="vs">VS</div><div class="team"><div class="crest">${g.awayIcon||"⚽"}</div>${g.away}</div></div><div class="pred"><div class="predlabel">PROBABILIDADE ESTIMADA · 1X2</div><div class="markets">${(g.p||[0,0,0]).map((v,i)=>`<button class="market ${picks[g.id]?.i===i?"selected":""}" data-id="${g.id}" data-i="${i}"><span>${marketNames[i]}</span><b>${v}%</b></button>`).join("")}</div></div><div class="matchactions"><span class="badge">Placar provável: ${g.score||"—"}</span><button class="smallbtn" data-pick="${g.id}">Adicionar ao boletim</button></div></article>`).join("")||'<div class="empty">Não foram encontrados jogos.</div>';
+ document.querySelectorAll(".market").forEach(b=>b.addEventListener("click",()=>{const g=games.find(x=>x.id===b.dataset.id);picks[g.id]={i:+b.dataset.i};render()}));
+ document.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{if(!picks[b.dataset.pick])picks[b.dataset.pick]={i:0};render()}));
+ renderPicks();
+}
+function renderPicks(){
+ const el=document.getElementById("picks"), ids=Object.keys(picks);
+ if(!ids.length){el.innerHTML='<div class="empty">Ainda não selecionaste jogos.</div>';document.getElementById("combined").textContent="—";return}
+ el.innerHTML=ids.map(id=>{const g=games.find(x=>x.id===id),i=picks[id].i;return `<div class="pick"><strong>${g.home} – ${g.away}</strong><span>${marketNames[i]} · ${(g.p||[0,0,0])[i]}%</span> <button class="smallbtn" data-remove="${id}" style="float:right">Remover</button></div>`}).join("");
+ const prob=ids.reduce((v,id)=>v*((games.find(g=>g.id===id).p||[0,0,0])[picks[id].i]/100),1);
+ document.getElementById("combined").textContent=(prob*100).toFixed(2)+"%";
+ document.querySelectorAll("[data-remove]").forEach(b=>b.addEventListener("click",()=>{delete picks[b.dataset.remove];render()}));
+}
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("clear").addEventListener("click",()=>{picks={};render()});
+document.getElementById("refresh").addEventListener("click",async()=>{
+ const btn=document.getElementById("refresh");btn.textContent="A carregar…";btn.disabled=true;
+ try{const r=await fetch("/api/fixtures");if(!r.ok)throw Error("API ainda não configurada");const d=await r.json();if(!Array.isArray(d.fixtures)||!d.fixtures.length)throw Error("Sem jogos disponíveis");
+ games=d.fixtures.map((f,i)=>({id:String(f.id||i),league:f.league||"Futebol",date:f.date||"",home:f.home||"Equipa casa",away:f.away||"Equipa visitante",homeIcon:"⚽",awayIcon:"⚽",p:f.probabilities||[34,32,34],score:f.predictedScore||"—"}));document.getElementById("status").textContent="Dados da API";render();
+ }catch(e){document.getElementById("status").textContent="Modo de demonstração";alert("Ainda não há dados reais ligados. Configura a função /api/fixtures e a chave API no servidor para ativar os jogos reais.")}finally{btn.textContent="↻ Atualizar jogos";btn.disabled=false}
+});
+render();
+</script></body></html>
